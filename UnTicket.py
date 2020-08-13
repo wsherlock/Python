@@ -14,6 +14,7 @@ while 1>0:
         }
 
     r = requests.post(github_url,headers=headers,data=data)
+
     DOMTree = xml.dom.minidom.parseString(r.text)
 
     collection = DOMTree.documentElement
@@ -26,7 +27,7 @@ while 1>0:
     else:
         if collection.hasAttribute("FlightSegments"):
             print ("Root element : %s" % collection.getAttribute("FlightSegments"))
-        ticketNo = input("TicketNo:")
+
         FlightSegments = collection.getElementsByTagName("FlightSegment")
 
         for FlightSegment in FlightSegments:
